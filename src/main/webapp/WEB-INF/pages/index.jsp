@@ -5,5 +5,8 @@
 </head>
 <body>
 <h1>Alex de Birch presents</h1>
+<br/>
+<a href="/books" target="_blank">Books list</a>
+<br/>
 </body>
 </html>
