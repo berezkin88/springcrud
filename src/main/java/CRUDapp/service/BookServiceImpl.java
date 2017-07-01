@@ -44,4 +44,8 @@ public class BookServiceImpl implements BookService {
     public List<Book> listBooks() {
         return bookDao.listBooks();
     }
+
+    public void setBookDao(BookDao bookDao) {
+        this.bookDao = bookDao;
+    }
 }
