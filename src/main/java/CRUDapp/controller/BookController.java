@@ -37,14 +37,14 @@ public class BookController {
     }
 
     @RequestMapping(value = "remove/{id}")
-    public String removeBook(@PathVariable("id") long id) {
+    public String removeBook(@PathVariable("id") Long id) {
         bookService.deleteBook(id);
 
         return "redirect:/books";
     }
 
     @RequestMapping(value = "/edit/{id}")
-    public String editBook(@PathVariable("id") long id, Model model) {
+    public String editBook(@PathVariable("id") Long id, Model model) {
         model.addAttribute("book", bookService.getBookById(id));
         model.addAttribute("listBooks", bookService.listBooks());
 
@@ -52,7 +52,7 @@ public class BookController {
     }
 
     @RequestMapping(value = "/bookData/{id}")
-    public String bookData(@PathVariable("id") long id, Model model) {
+    public String bookData(@PathVariable("id") Long id, Model model) {
         model.addAttribute("book", bookService.getBookById(id));
 
         return "bookData";
@@ -62,5 +62,17 @@ public class BookController {
     @Qualifier(value = "bookService")
     public void setBookService(BookService bookService) {
         this.bookService = bookService;
+    }
+
+    /**
+     * Created by Alexander on 29/06/2017.
+     */
+    @Controller
+    public static class IndexController {
+
+        @RequestMapping(value = "/", method = RequestMethod.GET)
+        public String index(){
+            return "index";
+        }
     }
 }

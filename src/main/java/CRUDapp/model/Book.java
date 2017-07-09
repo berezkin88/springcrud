@@ -16,7 +16,7 @@ public class Book {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "book_title")
     private String bookTitle;
@@ -36,11 +36,11 @@ public class Book {
         this.price = price;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

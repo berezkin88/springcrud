@@ -27,8 +27,8 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public void deleteBook(long id) {
-        Book book = (Book) sessionFactory.getCurrentSession().load(Book.class, id);
+    public void deleteBook(Long id) {
+        Book book = sessionFactory.getCurrentSession().load(Book.class, new Long(id));
 
         if (book != null){
             sessionFactory.getCurrentSession().delete(book);
@@ -39,17 +39,15 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public Book getBookById(long id) {
-        Book book = (Book) sessionFactory.getCurrentSession().createQuery("select b from Book b where b.id like :id").
-                setParameter("id", id).uniqueResult();
+    public Book getBookById(Long id) {
+        Book book = sessionFactory.getCurrentSession().load(Book.class, new Long(id));
         System.out.println("The book is successfully found. Book details: " + book.toString());
         return book;
     }
 
     @Override
-    @SuppressWarnings("uncheked")
     public List listBooks() {
-        return sessionFactory.getCurrentSession().createQuery("select b from Book b").list();
+        return sessionFactory.getCurrentSession().createQuery("SELECT b FROM Book b").list();
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

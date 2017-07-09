@@ -11,8 +11,9 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="CRUDapp.web"/>
+    <context:component-scan base-package="CRUDapp.controller"/>
     <mvc:annotation-driven/>
+    <mvc:default-servlet-handler/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
